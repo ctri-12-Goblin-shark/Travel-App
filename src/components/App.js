@@ -1,37 +1,27 @@
-import React, { Component } from 'react'
-import Select from './Select'
-import { useState } from 'react'
+import React, { Component } from 'react';
+import Select from './Select';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Plane from './Plane';
+import Hotel from './Hotel';
+import Car from './Car';
+import Summary from './Summary';
+
+
+
+
+import { useState } from 'react';
 const App = () => {
-
-    
-    
-
-//     const options = {
-//         method: 'GET',
-//         headers: {
-//             'X-RapidAPI-Key': '87407b036amshc2e3c92bcd9dfc7p11b8afjsn9aaed489847d',
-//             'X-RapidAPI-Host': 'skyscanner44.p.rapidapi.com'
-//         }
-//     };
-    
-//     fetch('https://skyscanner44.p.rapidapi.com/search-rentacar?pickupId=95673383&pickupDate=2022-11-06&pickupTime=10%3A00&returnDate=2022-11-11&returnTime=10%3A00&currency=EUR', options)
-//         .then(response => response.json())
-//         .then(response => console.log(response))
-//         .catch(err => console.error(err));
-// }
-
-
-        return (
-            <div>
-                <Select
-                
-                />
-                
-                <h1> Hello World </h1>
-            </div>
-
-        )
-    }
+  return (
+    <Routes>
+      {/* paths do not exist in the backend, purely a filter for react; not http request*/}
+      <Route path = "/" element = {<Select/>}/>
+      <Route path = "/plane" element = {<Plane/>}/>
+      <Route path = "/hotel" element = {<Hotel/>}/>
+      <Route path = "/car" element = {<Car/>}/>
+      <Route path = "/summary" element = {<Summary/>}/>
+    </Routes>
+  )
+}
 
 
 export default App; 

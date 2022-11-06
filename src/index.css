@@ -1,0 +1,12 @@
+.destination {
+    width: 100px;
+    height: 30px;
+    border: 1px solid red;
+}
+
+.passengers {
+    border: 1px solid blue;
+    width: 100px;
+    height: 30px;
+}
+
