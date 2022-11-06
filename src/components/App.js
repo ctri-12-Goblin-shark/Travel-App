@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import Select from './Select'
-class App extends Component {
+import { useState } from 'react'
+const App = () => {
+
+    
+    
+
 //     const options = {
 //         method: 'GET',
 //         headers: {
@@ -15,15 +20,18 @@ class App extends Component {
 //         .catch(err => console.error(err));
 // }
 
-    render() {
+
         return (
             <div>
-                <Select/>
+                <Select
+                
+                />
+                
                 <h1> Hello World </h1>
             </div>
 
         )
     }
-}
+
 
 export default App; 

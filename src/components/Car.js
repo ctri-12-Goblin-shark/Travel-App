@@ -1,8 +1,6 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import { useState } from "react";
-import {parse} from '../dateParser.js';
-
 
 const Car = () => {
     const [budget, setBudget] = useState("")
@@ -15,7 +13,7 @@ const Car = () => {
     const [arrivalDate, setArrivalDate] = useState("")
     const [hotelPrice, setHotelPrice] = useState("")
     const [hotelPricePreference, setHotelPricePreference] = useState("")
-    const [carType, setCarTypePreference] = useState("")
+    const [carType, setCarType] = useState("")
     const [carPrice, setCarPrice] = useState("")
     const [carTypePreference, setCarPricePreference] = useState("")
 
@@ -54,6 +52,10 @@ const Car = () => {
     
                 </form>
                 <button className = "next">Next</button>
+
+                <div>
+                    
+                </div>
             </div>
     
     
