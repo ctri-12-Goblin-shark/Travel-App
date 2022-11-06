@@ -8,6 +8,9 @@ const Select = () => {
     const [bags, setBag] = useState("")
     const [travelers, setTravelers] = useState("")
     const [pickupDate, setPickup] = useState("")
+    const [planePrice, setPlanePrice] = useState("")
+    const [departureDate, setDepartureDate] = useState("")
+    const [arrivalDate, setArrivalDate] = useState("")
 
 
 
@@ -17,11 +20,19 @@ const Select = () => {
 const formSubmission = (e) => {
     e.preventDefault();
     
-    fetch(`https://skyscanner44.p.rapidapi.com/search-rentacar?pickupId=95673383&pickupDate=${pickupDate}&pickupTime=${pickupTime}&returnDate=${returnDate}2022-11-11&returnTime=${retTime}&currency=EUR`, options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
-}
+    fetch('/api/plane', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/JSON',
+        },
+        body: JSON.stringify({ destination:destination, travelers:travelers, departureDate: departureDate, arrivalDate:arrivalDate}),
+      })
+        .then((res) => {res.json()})
+        .then((res) => {
+            setPlanePrice(res.locals.planePrice)
+        })
+        .catch((error) => console.log('ERROR: could not post-fetch: ' + error));
+    }
 
     return (
         <div className = "container-selection">
@@ -50,6 +61,7 @@ const formSubmission = (e) => {
             </select>
 
             </form>
+            <button className = "next">Next</button>
         </div>
 
 
@@ -57,3 +69,5 @@ const formSubmission = (e) => {
 
     )
 }
+
+export default Select;
