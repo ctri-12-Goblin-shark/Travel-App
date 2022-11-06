@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Select from './Select'
 class App extends Component {
 //     const options = {
 //         method: 'GET',
@@ -18,6 +18,7 @@ class App extends Component {
     render() {
         return (
             <div>
+                <Select/>
                 <h1> Hello World </h1>
             </div>
 

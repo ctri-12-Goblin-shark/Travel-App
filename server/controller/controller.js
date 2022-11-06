@@ -4,13 +4,15 @@ const controller = {};
 
 
 
-
+// destination, number of people, budget
 controller.getPlaneData = (req,res,next) => {
 
 }
+
 controller.getHotelData = (req,res,next) => {
     
 }
+
 controller.getCarData = (req,res,next) => {
     
 }
@@ -35,3 +37,6 @@ controller.getCarData = (req,res,next) => {
 
 
 module.exports = controller;
+
+
+// post request: 

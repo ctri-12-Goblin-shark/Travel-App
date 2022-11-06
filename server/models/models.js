@@ -12,6 +12,11 @@ mongoose.connect(MONGO_URI, {
 
 const Schema = mongoose.Schema;
 
+const citySchema = new mongoose.Schema({
+    
+})
+
+
 module.exports = {
 
 };
