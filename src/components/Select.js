@@ -1,134 +1,112 @@
 import React from "react";
 import { useState } from "react";
-import Datepicker from 'react-datepicker'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import Plane from "./Plane.js";
+import {dateParse} from '../dateParser.js'
 //import { DateRangePicker } from 'rsuite'
-
+import 'react-datepicker/dist/react-datepicker.css';
 
 const Select = () => {
-    const [budget, setBudget] = useState("")
-    const [destination,setDestination] = useState("")
-    const [bags, setBag] = useState("")
-    const [travelers, setTravelers] = useState("")
-    const [planePrice, setPlanePrice] = useState("")
-    const [departureDate, setDepartureDate] = useState("")
-    const [returnDate, setReturnDate] = useState("")
-    const [pickupDate, setPickup] = useState("")
+  const [budget, setBudget] = useState("");
+  const [destination,setDestination] = useState("");
+  const [passengers, setPassengers] = useState("");
+  const [departureDate, setDepartureDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
 
-    const idApi = {
-        "ATL": "Atl ID",
-        "LAX": "LAX ID",
-        "BER": "BER ID",
-        "SEA": "SEA ID",
-        "BLC": "BLC ID",
-        "SIN": "SIN ID",
-        "JFK": "JFK ID",
-        "ONT": "ONT ID",
-    }
+  const idApi = {
+    "Atlanta": "ATL",
+    "Los Angeles": "LAX",
+    "Berlin": "BER",
+    "Seattle": "SEA",
+    "Bali": "DPS",
+    "Singapore": "SIN",
+    "New York City": "JFK",
+    "Ontario": "ONT",
+  };
 
+  const handleDestination = (e) => {
+    const destinationSelect = e.target.getAttribute('data-value');
+    console.log(e.target.getAttribute('data-value'));
+    setDestination(destinationSelect);
+  };
+  const handlePassengers = (e) => {
+    const passengerSelect = e.target.getAttribute('data-value');
+    console.log(e.target.getAttribute('data-value'));
+    setPassengers(passengerSelect);
+  };
+  const handleDepartureDate = (date) => {
+    console.log(dateParse(date.toString()));
+    // const departure = 
+  }
+  const handleReturnDate = (date) => {
+    console.log(dateParse(date.toString()))
+    // const returnDate = e.target.get;
+  }
 
-const formSubmission = (e) => {
-    e.preventDefault();
-    setBudget(e.target.value);
-    setTravelers(e.target.value);
-    //const idNum = idApi.destination
-    //console.log(idApi["BLC"])
-    const reqObj = {destination,travelers,id: idApi[destination], budget}
-    // setApiObj({"destination":{destination},"travelers":"dd"})
-    console.log("destination", {destination});
-    //console.log("travelers", {travelers});
-    //console.log("budget", {budget})
-    console.log({reqObj})
+//   const Example = () => {
+//     const [startDate, setStartDate] = useState(new Date());
+//     return (
+//       <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} />
+//     );
+//   };
+  
+  
 
+  return (
+    <div className = "initialSelect">
+      <input className = "budget"></input>
+      <div className = "destinationSelect">
+        <div onClick = {handleDestination} data-value= "ATL" className = "destination">Atlanta</div>
+        <div onClick = {handleDestination} data-value= "LAX" className = "destination">Los Angeles</div>
+        <div onClick = {handleDestination} data-value = "BER" className = "destination">Berlin</div>
+        <div onClick = {handleDestination} data-value = "SEA" className = "destination">Seattle</div>
+        <div onClick = {handleDestination} data-value = "DPS" className = "destination">Bali</div>
+        <div onClick = {handleDestination} data-value = "SIN" className = "destination">Singapore</div>
+        <div onClick = {handleDestination} data-value = "JFK" className = "destination">New York City</div>
+        <div onClick = {handleDestination} data-value = "ONT" className = "destination">Ontario</div>
+      </div>
 
-    // fetch('/api/plane', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'Application/JSON',
-    //     },
-    //     body: JSON.stringify({ destination:destination, travelers:travelers, departureDate: departureDate, returnDate:returnDate}),
-    //   })
-    //     .then((res) => {res.json()})
-    //     .then((res) => {
-    //         setPlanePrice(res.locals.planePrice)
-    //     })
-        // .catch((error) => console.log('ERROR: could not post-fetch: ' + error));
-    }
+      <div className = "passengerSelect">
+        <div onClick = {handlePassengers} data-value = "1" className = "passengers">1</div>
+        <div onClick = {handlePassengers} data-value = "2" className = "passengers">2</div>
+        <div onClick = {handlePassengers} data-value = "3" className = "passengers">3</div>
+        <div onClick = {handlePassengers} data-value = "4" className = "passengers">4</div>
+        <div onClick = {handlePassengers} data-value = "5" className = "passengers">5</div>
+        <div onClick = {handlePassengers} data-value = "6" className = "passengers">6</div>
+        <div onClick = {handlePassengers} data-value = "7" className = "passengers">7</div>
+        <div onClick = {handlePassengers} data-value = "8" className = "passengers">8</div>
+        <div onClick = {handlePassengers} data-value = "9" className = "passengers">9</div>
+      </div>
 
-    const dateRange = (e) => {
-        
-        console.log(departureDate)
-        console.log(returnDate)
-    }
+    <div id="departure-date-picker" className="datePicker">
+        <h4>Select Departure Date</h4>
+        <DatePicker className="date" selected = {departureDate} onChange={(date) => {setDepartureDate(date); handleDepartureDate}} />
+    </div>
 
-    return (
-        <div className = "container-selection">
-            
-            <form onSubmit={formSubmission}>
-                <div> Select Destination
-            <select className="destination"
-            onChange={e => {
-                const selectedDestination = e.target.value
-                setDestination(selectedDestination)
-            }}
-            >
-            <option value="BER">Berlin</option>
-            <option value="LAX">Los Angeles</option>
-            <option value="ATL">Atlanta</option>
-            <option value="SEA">Seattle</option>
-            <option value="BLC">Bali</option>
-            <option value="SIN">Singaopore</option>
-            <option value="JFK">New York</option>
-            <option value="ONT">Ontario</option>
-            
-            </select>
-            </div>
-<div> Enter Number of Travelers
-            <select className="travelers-number"
-            onChange={e => {
-                const travelerCount = e.target.value;
-                setTravelers(travelerCount) 
-            }}
-            >
-            <option value="1"> 1 </option>
-            <option value="2"> 2 </option>
-            <option value="3"> 3 </option>
-            <option value="4"> 4 </option>
-            <option value="5"> 5 </option>
-            <option value="6"> 6 </option>
-            
-            </select>
-            </div>
-            <div>Enter Budget
-            <input type='number' 
-            placeholder='Enter Budget' 
-            className='Budget-input'
-            value={budget} 
-            onChange={e => {
-                const budgetAmount = e.target.value
-                setBudget(budgetAmount)  
-            }}
-            />
-             </div>
-             
-            <button className="next">Next</button>
-            </form>
-            {/* <Datepicker
-            
-              controls={['calendar']}
-              select="range"
-              display="inline"
-              
-              
-          />
+    <div id="return-date-picker" className="datePicker">
+        <h4> Select Return Date </h4>
+        <DatePicker selected = {returnDate} onChange={(date) => {setReturnDate(date); handleReturnDate}} />
+    </div>
+{/* 
+    <div>
+        <DatePicker selected={returnDate} onChange={(date) => setReturnDate(date)} />
+    </div> */}
 
-          
-          <div>{departureDate} - {returnDate}</div> */}
-        </div>
+      <Link
+       to = "/plane"
+       state = {{
+        destination: destination,
+        passengers: passengers,
+        budget: budget
+       }}
+       >
+      <button className="next">Next</button>
+      </Link>
+    </div>
 
-
-
-
-    )
-}
+  );
+};
 
 export default Select;

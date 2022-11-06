@@ -1,67 +1,52 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import { useState } from "react";
+import {useLocation} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Car = () => {
-    const [budget, setBudget] = useState("")
-    const [destination,setDestination] = useState("")
-    const [bags, setBag] = useState("")
-    const [travelers, setTravelers] = useState("")
-    const [pickupDate, setPickup] = useState("")
-    const [planePrice, setPlanePrice] = useState("")
-    const [departureDate, setDepartureDate] = useState("")
-    const [arrivalDate, setArrivalDate] = useState("")
-    const [hotelPrice, setHotelPrice] = useState("")
-    const [hotelPricePreference, setHotelPricePreference] = useState("")
-    const [carType, setCarType] = useState("")
-    const [carPrice, setCarPrice] = useState("")
-    const [carTypePreference, setCarPricePreference] = useState("")
+    const [carType,setCarType] = useState("")
+    const [carPricePreference,setCarPricePreference] = useState("")
 
+const handleCarType = (e) => {
+    const carTypePrefer = e.target.getAttribute("data-value")
+    setCarType(carTypePrefer);
+}
+const handleCarPrice = (e) => {
+    const carPricePrefer = e.target.getAttribute("data-value")
+    setCarPricePreference(carPricePrefer);
+    
+}
+return (
+    <div className = "carSelect">
+        <div className = "carTypeSelect">
+        <div onClick = {handleCarType} data-value = "bmw">BMW</div>
+        <div onClick = {handleCarType} data-value = "audi" >AUDI</div>
+        <div onClick = {handleCarType} data-value = "vw">VW</div>
+        </div>
+        <div className = "carPriceSelect">
+        <div onClick = {handleCarPrice} data-value = "high">High-End</div>
+        <div onClick = {handleCarPrice} data-value = "best">Best</div>
+        <div onClick = {handleCarPrice} data-value = "cheap">Chepest</div>
+        </div>
 
-    const formSubmission = (e) => {
-        e.preventDefault();
-        
-        fetch('/api/car', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'Application/JSON',
-            },
-            body: JSON.stringify({ destination:destination, travelers:travelers, departureDate: departureDate, arrivalDate:arrivalDate, carTypePreference: carTypePreference}),
-          })
-            .then((res) => {res.json()})
-            .then((res) => {
-                setCarPrice(res.locals.carPrice)
-            })
-            .catch((error) => console.log('ERROR: could not post-fetch: ' + error));
-        }
-    
-        return (
-            <div className = "container-selection">
-                <form onSubmit={formSubmission}>
-                <select className="car-price-preference"
-                onChange={e => {
-                    const carTypePrefer = e.target.value;
-                    setCarTypePreference(carTypePrefer)
-                }}
-                >
-                <option value="bmw"> BMW </option>
-                <option value="audi"> Audi </option>
-                <option value="vw"> Volkswagen </option>
-    
-                </select>
-    
-                </form>
-                <button className = "next">Next</button>
+        <Link
+       to = "/summary"
+       state = {{
+        destination: location.state.destination,
+        passengers: location.state.passengers,
+        budget:location.state.budget,
+        planePricePreference: location.state.planePricePreference,
+        hotelPreference: location.state.hotelPreference,
+        carTypePreference:carType,
+        carPricePreference:carPricePreference
+       }}
+       >
+      <button className="next">Next</button>
+      </Link>
+    </div>
 
-                <div>
-                    
-                </div>
-            </div>
-    
-    
-    
-    
-        )
+)
 }
 
 export default Car;
