@@ -1,7 +1,7 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import { useState } from "react";
-import {parse} from '../dateParser.js';
+import Datepicker from 'react-datepicker'
+//import { DateRangePicker } from 'rsuite'
 
 
 const Select = () => {
@@ -9,45 +9,62 @@ const Select = () => {
     const [destination,setDestination] = useState("")
     const [bags, setBag] = useState("")
     const [travelers, setTravelers] = useState("")
-    const [pickupDate, setPickup] = useState("")
     const [planePrice, setPlanePrice] = useState("")
     const [departureDate, setDepartureDate] = useState("")
-    const [arrivalDate, setArrivalDate] = useState("")
-    
+    const [returnDate, setReturnDate] = useState("")
+    const [pickupDate, setPickup] = useState("")
 
-
-const budgetSubmission = (e) => {
-    e.preventDefault()
-
-}
+    const idApi = {
+        "ATL": "Atl ID",
+        "LAX": "LAX ID",
+        "BER": "BER ID",
+        "SEA": "SEA ID",
+        "BLC": "BLC ID",
+        "SIN": "SIN ID",
+        "JFK": "JFK ID",
+        "ONT": "ONT ID",
+    }
 
 
 const formSubmission = (e) => {
     e.preventDefault();
     setBudget(e.target.value);
     setTravelers(e.target.value);
-    setBudget(e.target.value);
-    console.log("destination", destination);
-    console.log("travelers", {travelers});
-    console.log("budget", budget)
+    //const idNum = idApi.destination
+    //console.log(idApi["BLC"])
+    const reqObj = {destination,travelers,id: idApi[destination], budget}
+    // setApiObj({"destination":{destination},"travelers":"dd"})
+    console.log("destination", {destination});
+    //console.log("travelers", {travelers});
+    //console.log("budget", {budget})
+    console.log({reqObj})
 
-    fetch('/api/plane', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'Application/JSON',
-        },
-        body: JSON.stringify({ destination:destination, travelers:travelers, departureDate: departureDate, arrivalDate:arrivalDate}),
-      })
-        .then((res) => {res.json()})
-        .then((res) => {
-            setPlanePrice(res.locals.planePrice)
-        })
-        .catch((error) => console.log('ERROR: could not post-fetch: ' + error));
+
+    // fetch('/api/plane', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'Application/JSON',
+    //     },
+    //     body: JSON.stringify({ destination:destination, travelers:travelers, departureDate: departureDate, returnDate:returnDate}),
+    //   })
+    //     .then((res) => {res.json()})
+    //     .then((res) => {
+    //         setPlanePrice(res.locals.planePrice)
+    //     })
+        // .catch((error) => console.log('ERROR: could not post-fetch: ' + error));
+    }
+
+    const dateRange = (e) => {
+        
+        console.log(departureDate)
+        console.log(returnDate)
     }
 
     return (
         <div className = "container-selection">
+            
             <form onSubmit={formSubmission}>
+                <div> Select Destination
             <select className="destination"
             onChange={e => {
                 const selectedDestination = e.target.value
@@ -64,7 +81,8 @@ const formSubmission = (e) => {
             <option value="ONT">Ontario</option>
             
             </select>
-
+            </div>
+<div> Enter Number of Travelers
             <select className="travelers-number"
             onChange={e => {
                 const travelerCount = e.target.value;
@@ -79,27 +97,32 @@ const formSubmission = (e) => {
             <option value="6"> 6 </option>
             
             </select>
+            </div>
+            <div>Enter Budget
             <input type='number' 
-            placeholder='Enter number of traveler' 
-            className='traveler-input'
+            placeholder='Enter Budget' 
+            className='Budget-input'
             value={budget} 
             onChange={e => {
                 const budgetAmount = e.target.value
                 setBudget(budgetAmount)  
             }}
             />
-             <DatePicker
-              onChange={e => {
-                const date = e.target.value
-                setDepartureDate(date)
-              } }
-              value={departureDate}
-              name="startDate"
-              dateFormat="MM/dd/yyyy"
+             </div>
+             
+            <button className="next">Next</button>
+            </form>
+            {/* <Datepicker
+            
+              controls={['calendar']}
+              select="range"
+              display="inline"
+              
+              
           />
 
-            </form>
-            <button className = "next">Next</button>
+          
+          <div>{departureDate} - {returnDate}</div> */}
         </div>
 
 
