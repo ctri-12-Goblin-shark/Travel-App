@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import Select from './Select';
+import Select from './Select.js';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Plane from './Plane';
-import Hotel from './Hotel';
-import Car from './Car';
-import Summary from './Summary';
-
-
-
-
+import Plane from './Plane.js';
+import Hotel from './Hotel.js';
+import Car from './Car.js';
+import Summary from './Summary.js';
 import { useState } from 'react';
 const App = () => {
   return (

@@ -6,9 +6,13 @@ import { Link } from "react-router-dom";
 
 function Plane() {
     const [planePricePreference, setPlanePricePreference] = useState("")
+    const location = useLocation();
 
 const handlePlanePricePreference = (e) => {
     const planeSelect = e.target.getAttribute('data-value');
+    console.log(location.state.destination)
+    console.log(location.state.budget)
+    console.log(planeSelect)
     setPlanePricePreference(planeSelect);
 }
   return (
@@ -23,7 +27,8 @@ const handlePlanePricePreference = (e) => {
         destination: location.state.destination,
         passengers: location.state.passengers,
         budget:location.state.budget,
-        planePricePreference: planePricePreference
+        planePricePreference: planePricePreference,
+        
        }}
        >
       <button className="next">Next</button>
