@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const apiRouter = require('./routes/api')
+const apiRouter = require('./router/api')
 const app = express();
 const PORT = 1234;
 
@@ -9,10 +9,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, '../client')));
 
-
+// apiRouter
 app.use('/api', apiRouter);
 //
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).send("hello");
 })
 

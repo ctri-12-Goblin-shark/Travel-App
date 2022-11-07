@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const Hotel = () => {
     const [hotelPreference, setHotelPreference] = useState("");
+    const location = useLocation();
 
 
 const handleHotelPreference = (e) => {
@@ -28,7 +29,8 @@ return(
         passengers: location.state.passengers,
         budget:location.state.budget,
         planePricePreference: location.state.planePricePreference,
-        hotelPreference: hotelPreference
+        hotelPreference: hotelPreference,
+        
        }}
        >
       <button className="next">Next</button>

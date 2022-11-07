@@ -9,7 +9,7 @@ import {dateParse} from '../dateParser.js'
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Select = () => {
-  const [budget, setBudget] = useState("");
+  const [budget, setBudget] = useState();
   const [destination,setDestination] = useState("");
   const [passengers, setPassengers] = useState("");
   const [departureDate, setDepartureDate] = useState("");
@@ -56,7 +56,7 @@ const Select = () => {
 
   return (
     <div className = "initialSelect">
-      <input className = "budget"></input>
+      <input onChange={(e) => setBudget(event.target.value)} className = "budget"></input>
       <div className = "destinationSelect">
         <div onClick = {handleDestination} data-value= "ATL" className = "destination">Atlanta</div>
         <div onClick = {handleDestination} data-value= "LAX" className = "destination">Los Angeles</div>
@@ -99,7 +99,8 @@ const Select = () => {
        state = {{
         destination: destination,
         passengers: passengers,
-        budget: budget
+        budget: budget,
+        
        }}
        >
       <button className="next">Next</button>

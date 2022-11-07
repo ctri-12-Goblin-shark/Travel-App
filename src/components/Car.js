@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const Car = () => {
     const [carType,setCarType] = useState("")
     const [carPricePreference,setCarPricePreference] = useState("")
+    const location = useLocation();
 
 const handleCarType = (e) => {
     const carTypePrefer = e.target.getAttribute("data-value")
@@ -39,7 +40,8 @@ return (
         planePricePreference: location.state.planePricePreference,
         hotelPreference: location.state.hotelPreference,
         carTypePreference:carType,
-        carPricePreference:carPricePreference
+        carPricePreference:carPricePreference,
+        
        }}
        >
       <button className="next">Next</button>

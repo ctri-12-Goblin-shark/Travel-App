@@ -1,6 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
-import { useState, useEffect, useLocation } from 'react';
+import { useState, useEffect} from 'react';
+import { useLocation } from "react-router-dom"
 import Select from './Select';
 
 const Summary = () => {
@@ -8,7 +9,7 @@ const Summary = () => {
     const[displayHotel, setDisplayHotel] = useState()
     const[displayCar, setDisplayCar] = useState()
     const[displaySavings, setDisplaySavings] = useState()
-
+    const location = useLocation();
 
     useEffect(() => {
         fetch('/api', {
@@ -23,7 +24,8 @@ const Summary = () => {
                 planePricePreference: location.state.planePricePreference,
                 hotelPreference: location.state.hotelPreference,
                 carTypePreference:location.state.carType,
-                carPricePreference:location.state.carPricePreference
+                carPricePreference:location.state.carPricePreference,
+                
             }),
           })
             .then((res) => {res.json()})
@@ -46,4 +48,4 @@ const Summary = () => {
     )
 }
 
-export default Select;
+export default Summary;
