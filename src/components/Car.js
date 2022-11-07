@@ -23,12 +23,7 @@ return (
         <div className = "carTypeSelect">
         <div onClick = {handleCarType} data-value = "bmw">BMW</div>
         <div onClick = {handleCarType} data-value = "audi" >AUDI</div>
-        <div onClick = {handleCarType} data-value = "vw">VW</div>
-        </div>
-        <div className = "carPriceSelect">
-        <div onClick = {handleCarPrice} data-value = "high">High-End</div>
-        <div onClick = {handleCarPrice} data-value = "best">Best</div>
-        <div onClick = {handleCarPrice} data-value = "cheap">Chepest</div>
+        <div onClick = {handleCarType} data-value = "volkswagen">VW</div>
         </div>
 
         <Link
