@@ -3,6 +3,9 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import { useState } from "react";
 import {useLocation} from "react-router-dom";
 import { Link } from "react-router-dom";
+import Best from '../img/best.png';
+import CHEAP from '../img/CHEAP.png';
+import LUXURY from '../img/LUXURY.png';
 
 
 const Hotel = () => {
@@ -22,9 +25,9 @@ return(
     <div>
     <p className = "instruction">Select Hotel Preference</p>
     <div className = "hotelSelect">
-        <div className = "hotel" onClick = {handleHotelPreference} data-value = "high" >High-End</div>
-        <div className = "hotel" onClick = {handleHotelPreference} data-value = "best" >Best</div>
-        <div className = "hotel" onClick = {handleHotelPreference} data-value = "cheap" >Cheapest</div>
+        <div className = "hotel" onClick = {handleHotelPreference} data-value = "high" ><img className="city-logo" src={LUXURY}></img><p>High-End</p></div>
+        <div className = "hotel" onClick = {handleHotelPreference} data-value = "best" ><img className="city-logo" src={Best}></img><p>Best</p></div>
+        <div className = "hotel" onClick = {handleHotelPreference} data-value = "cheap" ><img className="city-logo" src={CHEAP}></img><p>Cheapest</p></div>
     </div>
     <div className = "nextContainer">
         <Link

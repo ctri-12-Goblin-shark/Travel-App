@@ -4,6 +4,7 @@
 
 body {
     background-color: #e7e3f6;
+    padding-top: 50px;
 }
 
 input {
@@ -148,6 +149,10 @@ justify-content: space-around;
     padding-bottom: 50px;
 }
 
+.passengers {
+    font-size: 100px;
+}
+
 .instruction {
     padding-bottom: 50px;
     padding-bottom: 50px;
@@ -169,4 +174,52 @@ justify-content: space-around;
 td, th {
     border: 1px solid blueviolet;
     padding: 8px;
-  }
+}
+
+#instruction-div {
+    position: relative;
+    margin-top: 70px;
+    margin-bottom: -80px;
+}
+
+#destination-instruction-div{
+    background-color: #ffffff;
+    padding-top: 60px;
+    margin-top: 70px;
+    margin-bottom: -80px;
+}
+
+
+/* Plane */
+
+
+.plane {
+    letter-spacing: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HOTEL */
+
+.hotel {
+    letter-spacing: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* car */
+
+.car {
+    letter-spacing: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+#audi {
+    margin-bottom: 40px;
+    padding-top: 30px
+}
+
+button:hover {
+    background-color: rgb(120, 248, 161);
+}
