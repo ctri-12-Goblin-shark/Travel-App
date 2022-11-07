@@ -10,6 +10,7 @@ const Summary = () => {
     const[displayCar, setDisplayCar] = useState()
     const[displaySavings, setDisplaySavings] = useState()
     const location = useLocation();
+    const savings = location.state.budget;
 
     useEffect(() => {
         fetch('/api', {
@@ -21,18 +22,18 @@ const Summary = () => {
                 destination: location.state.destination,
                 passengers: location.state.passengers,
                 budget:location.state.budget,
+                savings: savings,
                 idAPI: location.state.idAPI,
                 planePricePreference: location.state.planePricePreference,
                 hotelPreference: location.state.hotelPreference,
                 carTypePreference:location.state.carType,
-                carPricePreference:location.state.carPricePreference,
             }),
           })
             .then((res) => {res.json()})
             .then((res) => {
-                setDisplayPlane(res.locals.plane);
-                setDisplayHotel(res.locals.hotel);
-                setDisplayCar(res.locals.car);
+                setDisplayPlane(res.locals.displayPlanePrice);
+                setDisplayHotel(res.locals.displayHotelPrice);
+                setDisplayCar(res.locals.displayCarPrice);
                 setDisplaySavings(res.locals.savings);
             })
             .catch((error) => console.log('ERROR: could not post-fetch: ' + error));
