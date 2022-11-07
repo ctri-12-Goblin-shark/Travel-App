@@ -11,17 +11,22 @@ const Hotel = () => {
 
 
 const handleHotelPreference = (e) => {
+    e.target.style.backgroundColor = '#78F8A1';
+    e.target.style.color = "black";
     const hotelPrefer = e.target.getAttribute("data-value");
     setHotelPreference(hotelPrefer);
 }
 
 
 return(
+    <div>
+    <p className = "instruction">Select Hotel Preference</p>
     <div className = "hotelSelect">
-        <div onClick = {handleHotelPreference} data-value = "high" >High-End</div>
-        <div onClick = {handleHotelPreference} data-value = "best" >Best</div>
-        <div onClick = {handleHotelPreference} data-value = "cheap" >Cheapest</div>
-
+        <div className = "hotel" onClick = {handleHotelPreference} data-value = "high" >High-End</div>
+        <div className = "hotel" onClick = {handleHotelPreference} data-value = "best" >Best</div>
+        <div className = "hotel" onClick = {handleHotelPreference} data-value = "cheap" >Cheapest</div>
+    </div>
+    <div className = "nextContainer">
         <Link
        to = "/car"
        state = {{
@@ -36,6 +41,7 @@ return(
        >
       <button className="next">Next</button>
       </Link>
+      </div>
     </div>
 
 

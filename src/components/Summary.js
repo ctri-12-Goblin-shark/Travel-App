@@ -12,6 +12,8 @@ const Summary = () => {
     const location = useLocation();
     const savings = location.state.budget;
 
+
+    //if this doesn't work we do onClick on a button that says CALCULATE!
     useEffect(() => {
         fetch('/api', {
             method: 'POST',
