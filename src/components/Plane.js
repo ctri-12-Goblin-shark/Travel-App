@@ -9,16 +9,21 @@ function Plane() {
     const location = useLocation();
 
 const handlePlanePricePreference = (e) => {
+    e.target.style.backgroundColor = '#78F8A1';
+    e.target.style.color = "black";
     const planeSelect = e.target.getAttribute('data-value');
     console.log(planeSelect)
     setPlanePricePreference(planeSelect);
 }
   return (
+    <div>
+    <p className = "instruction">Select Flight Preference</p>
     <div className = "planeSelect">
-        <div onClick = {handlePlanePricePreference} data-value = "1">Fastest</div>
-        <div onClick = {handlePlanePricePreference} data-value = "2">Cheapest</div>
-        <div onClick = {handlePlanePricePreference} data-value = "0">Best</div>
-
+        <div className = "plane" onClick = {handlePlanePricePreference} data-value = "1">Fastest</div>
+        <div className = "plane" onClick = {handlePlanePricePreference} data-value = "2">Cheapest</div>
+        <div className = "plane" onClick = {handlePlanePricePreference} data-value = "0">Best</div>
+      </div>
+      <div className = "nextContainer">
         <Link
        to = "/hotel"
        state = {{
@@ -32,6 +37,7 @@ const handlePlanePricePreference = (e) => {
        >
       <button className="next">Next</button>
       </Link>
+      </div>
     </div>
   )
 }

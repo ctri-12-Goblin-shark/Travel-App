@@ -12,11 +12,9 @@ const Select = () => {
   const [budget, setBudget] = useState();
   const [destination,setDestination] = useState("");
   const [passengers, setPassengers] = useState("");
-  const [departureDate, setDepartureDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
+  // const [departureDate, setDepartureDate] = useState("");
+  // const [returnDate, setReturnDate] = useState("");
   const [idAPI, setIdAPI] = useState();
-
-
 
   let parisID = 95565041;
   let singaporeID = 95673375;
@@ -37,25 +35,98 @@ const Select = () => {
     "DPS": baliID,
     "SEA": seaID
   };
- 
-
-
 
   const handleDestination = (e) => {
+    e.target.style.backgroundColor = '#78F8A1';
+    e.target.style.color = "black";
     const destinationSelect = e.target.getAttribute('data-value');
     setDestination(destinationSelect);
     setIdAPI(idAPIobj[destinationSelect])
 
   };
   const handlePassengers = (e) => {
+    e.target.style.backgroundColor = '#78F8A1';
+    e.target.style.color = "black";
     const passengerSelect = e.target.getAttribute('data-value');
     console.log(e.target.getAttribute('data-value'));
     setPassengers(passengerSelect);
   };
 
+  return (
+    <div className = "initialSelect">
+      <h1>Welcome to <span>PURPLE</span> traveler!</h1>
+      <input onChange={(event) => setBudget(event.target.value)} className = "budget"></input>
+      <p className = "instruction">Input Budget</p>
+      <div className = "destinationSelect">
+        <div onClick = {handleDestination} data-value= "ATL" className = "destination">Atlanta</div>
+        <div onClick = {handleDestination} data-value= "LAX" className = "destination">Los Angeles</div>
+        <div onClick = {handleDestination} data-value = "BER" className = "destination">Berlin</div>
+        <div onClick = {handleDestination} data-value = "SEA" className = "destination">Seattle</div>
+        <div onClick = {handleDestination} data-value = "CDG" className = "destination">Paris</div>
+        <div onClick = {handleDestination} data-value = "SIN" className = "destination">Singapore</div>
+        <div onClick = {handleDestination} data-value = "JFK" className = "destination">New York City</div>
+        <div onClick = {handleDestination} data-value = "DPS" className = "destination">Bali</div>
+      </div>
+      <p className = "instruction">Select a Destination</p>
+      <div className = "passengerSelect">
+        <div onClick = {handlePassengers} data-value = "1" className = "passengers">1</div>
+        <div onClick = {handlePassengers} data-value = "2" className = "passengers">2</div>
+        <div onClick = {handlePassengers} data-value = "3" className = "passengers">3</div>
+        <div onClick = {handlePassengers} data-value = "4" className = "passengers">4</div>
+        <div onClick = {handlePassengers} data-value = "5" className = "passengers">5</div>
+        <div onClick = {handlePassengers} data-value = "6" className = "passengers">6</div>
+        <div onClick = {handlePassengers} data-value = "7" className = "passengers">7</div>
+        <div onClick = {handlePassengers} data-value = "8" className = "passengers">8</div>
+      </div>
+      <p className = "instruction">Select # of Travelers</p>
+    <div className = "nextContainer">
+      <Link
+       to = "/plane"
+       state = {{
+        destination: destination,
+        passengers: passengers,
+        budget: budget,
+        idAPI: idAPI
+       }}
+       >
+      <button className="next">NEXT</button>
+      </Link>
+      </div>
+    </div>
+
+  );
+};
+
+export default Select;
 
 
-  //date stuff
+
+
+
+
+{/* <div id="departure-date-picker" className="datePicker">
+        <h4>Select Departure Date</h4>
+        <DatePicker className="date" selected = {departureDate} onChange={(date) => {setDepartureDate(date); handleDepartureDate}} />
+    </div>
+
+    <div id="return-date-picker" className="datePicker">
+        <h4> Select Return Date </h4>
+        <DatePicker selected = {returnDate} onChange={(date) => {setReturnDate(date); handleReturnDate}} />
+    </div> */}
+{/* 
+    <div>
+        <DatePicker selected={returnDate} onChange={(date) => setReturnDate(date)} />
+    </div> */}
+
+
+
+
+
+
+
+
+
+//date stuff
   // const handleDepartureDate = (date) => {
   //   console.log(dateParse(date.toString()));
   //   // const departure = 
@@ -71,29 +142,20 @@ const Select = () => {
 //       <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} />
 //     );
 //   };
-
-
-
-
-
 //api options object
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': 'bb4fb94ff1msh97b362efb2e3b6cp11ba3ajsn2104da1b763a',
-    'X-RapidAPI-Host': 'skyscanner44.p.rapidapi.com'
-  }
-};
-
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     'X-RapidAPI-Key': 'bb4fb94ff1msh97b362efb2e3b6cp11ba3ajsn2104da1b763a',
+//     'X-RapidAPI-Host': 'skyscanner44.p.rapidapi.com'
+//   }
+// };
 //fetch airport
 // fetch request for best flight plane
 // fetch('https://skyscanner44.p.rapidapi.com/search?adults=1&origin=MUC&destination=SIN&departureDate=2022-11-11&returnDate=2022-11-18', options)
 //   .then(response => response.json())
 //   .then(response => console.log(response))
 //   .catch(err => console.error(err));
-
-
-
 //query id info from api
   // fetch('https://skyscanner44.p.rapidapi.com/autocomplete-rentacar?query=berlin', options)
 	// .then(response => response.json())
@@ -113,65 +175,3 @@ const options = {
 //   .then(response => console.log(response))
 //   .catch(err => console.error(err));
   
-
-
-
-
-
-  return (
-    <div className = "initialSelect">
-      <input onChange={(event) => setBudget(event.target.value)} className = "budget"></input>
-      <div className = "destinationSelect">
-        <div onClick = {handleDestination} data-value= "ATL" className = "destination">Atlanta</div>
-        <div onClick = {handleDestination} data-value= "LAX" className = "destination">Los Angeles</div>
-        <div onClick = {handleDestination} data-value = "BER" className = "destination">Berlin</div>
-        <div onClick = {handleDestination} data-value = "SEA" className = "destination">Seattle</div>
-        <div onClick = {handleDestination} data-value = "CDG" className = "destination">Paris</div>
-        <div onClick = {handleDestination} data-value = "SIN" className = "destination">Singapore</div>
-        <div onClick = {handleDestination} data-value = "JFK" className = "destination">New York City</div>
-        <div onClick = {handleDestination} data-value = "DPS" className = "destination">Bali</div>
-      </div>
-
-      <div className = "passengerSelect">
-        <div onClick = {handlePassengers} data-value = "1" className = "passengers">1</div>
-        <div onClick = {handlePassengers} data-value = "2" className = "passengers">2</div>
-        <div onClick = {handlePassengers} data-value = "3" className = "passengers">3</div>
-        <div onClick = {handlePassengers} data-value = "4" className = "passengers">4</div>
-        <div onClick = {handlePassengers} data-value = "5" className = "passengers">5</div>
-        <div onClick = {handlePassengers} data-value = "6" className = "passengers">6</div>
-        <div onClick = {handlePassengers} data-value = "7" className = "passengers">7</div>
-        <div onClick = {handlePassengers} data-value = "8" className = "passengers">8</div>
-        <div onClick = {handlePassengers} data-value = "9" className = "passengers">9</div>
-      </div>
-
-    {/* <div id="departure-date-picker" className="datePicker">
-        <h4>Select Departure Date</h4>
-        <DatePicker className="date" selected = {departureDate} onChange={(date) => {setDepartureDate(date); handleDepartureDate}} />
-    </div>
-
-    <div id="return-date-picker" className="datePicker">
-        <h4> Select Return Date </h4>
-        <DatePicker selected = {returnDate} onChange={(date) => {setReturnDate(date); handleReturnDate}} />
-    </div> */}
-{/* 
-    <div>
-        <DatePicker selected={returnDate} onChange={(date) => setReturnDate(date)} />
-    </div> */}
-
-      <Link
-       to = "/plane"
-       state = {{
-        destination: destination,
-        passengers: passengers,
-        budget: budget,
-        idAPI: idAPI
-       }}
-       >
-      <button className="next">Next</button>
-      </Link>
-    </div>
-
-  );
-};
-
-export default Select;
