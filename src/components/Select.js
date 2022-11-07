@@ -7,14 +7,22 @@ import Plane from "./Plane.js";
 import {dateParse} from '../dateParser.js'
 //import { DateRangePicker } from 'rsuite'
 import 'react-datepicker/dist/react-datepicker.css';
+import ATL from '../img/ATL.png';
+import BALI from '../img/Bali.png';
+import BER from '../img/BER.png';
+import LAX from '../img/LAX.png';
+import NYC from '../img/NYC.png';
+import PAR from '../img/PAR.png';
+import SEA from '../img/SEA.png';
+import SIN from '../img/SIN.png';
 
 const Select = () => {
-  const [budget, setBudget] = useState();
-  const [destination,setDestination] = useState("");
-  const [passengers, setPassengers] = useState("");
+  const [budget, setBudget] = useState('');
+  const [destination,setDestination] = useState('');
+  const [passengers, setPassengers] = useState('');
   // const [departureDate, setDepartureDate] = useState("");
   // const [returnDate, setReturnDate] = useState("");
-  const [idAPI, setIdAPI] = useState();
+  const [idAPI, setIdAPI] = useState('');
 
   let parisID = 95565041;
   let singaporeID = 95673375;
@@ -58,14 +66,14 @@ const Select = () => {
       <input onChange={(event) => setBudget(event.target.value)} className = "budget"></input>
       <p className = "instruction">Input Budget</p>
       <div className = "destinationSelect">
-        <div onClick = {handleDestination} data-value= "ATL" className = "destination">Atlanta</div>
-        <div onClick = {handleDestination} data-value= "LAX" className = "destination">Los Angeles</div>
-        <div onClick = {handleDestination} data-value = "BER" className = "destination">Berlin</div>
-        <div onClick = {handleDestination} data-value = "SEA" className = "destination">Seattle</div>
-        <div onClick = {handleDestination} data-value = "CDG" className = "destination">Paris</div>
-        <div onClick = {handleDestination} data-value = "SIN" className = "destination">Singapore</div>
-        <div onClick = {handleDestination} data-value = "JFK" className = "destination">New York City</div>
-        <div onClick = {handleDestination} data-value = "DPS" className = "destination">Bali</div>
+        <div onClick = {handleDestination} data-value= "ATL" className = "destination"><img className="city-logo" src={ATL}></img><p className="city-name">Atlanta</p></div>
+        <div onClick = {handleDestination} data-value= "LAX" className = "destination"><img className="city-logo" src={LAX}></img><p className="city-name">Los Angeles</p></div>
+        <div onClick = {handleDestination} data-value = "BER" className = "destination"><img className="city-logo" src={BER}></img><p className="city-name">Berlin</p></div>
+        <div onClick = {handleDestination} data-value = "SEA" className = "destination"><img className="city-logo" src={SEA}></img><p className="city-name">Seattle</p></div>
+        <div onClick = {handleDestination} data-value = "CDG" className = "destination"><img className="city-logo" src={PAR}></img><p className="city-name">Paris</p></div>
+        <div onClick = {handleDestination} data-value = "SIN" className = "destination"><img className="city-logo" src={SIN}></img><p className="city-name">Singapore</p></div>
+        <div onClick = {handleDestination} data-value = "JFK" className = "destination"><img className="city-logo" src={NYC}></img><p className="city-name">New York City</p></div>
+        <div onClick = {handleDestination} data-value = "DPS" className = "destination"><img className="city-logo" src={BALI}></img><p className="city-name">Bali</p></div>
       </div>
       <p className = "instruction">Select a Destination</p>
       <div className = "passengerSelect">
