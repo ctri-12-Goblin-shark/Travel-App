@@ -51,7 +51,34 @@ const Select = () => {
 //       <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} />
 //     );
 //   };
-  
+
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': 'bb4fb94ff1msh97b362efb2e3b6cp11ba3ajsn2104da1b763a',
+    'X-RapidAPI-Host': 'skyscanner44.p.rapidapi.com'
+  }
+};
+
+// fetch request for best flight plane
+fetch('https://skyscanner44.p.rapidapi.com/search?adults=1&origin=MUC&destination=BER&departureDate=2022-11-11&returnDate=2022-11-18&currency=EUR', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
+
+
+// fetch request for hotel
+fetch('https://skyscanner44.p.rapidapi.com/search-hotel?locationId=95673383&adults=1&rooms=1&checkin=2022-11-11&checkout=2022-11-18&currency=EUR', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
+
+
+//fetch request for car
+fetch('https://skyscanner44.p.rapidapi.com/search-rentacar?pickupId=95673383&pickupDate=2022-11-11&pickupTime=10%3A00&returnDate=2022-11-18&returnTime=10%3A00&currency=EUR', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
   
 
   return (
