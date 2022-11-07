@@ -27,6 +27,7 @@ const handlePlanePricePreference = (e) => {
         destination: location.state.destination,
         passengers: location.state.passengers,
         budget:location.state.budget,
+        idAPI: location.state.idAPI,
         planePricePreference: planePricePreference,
         
        }}

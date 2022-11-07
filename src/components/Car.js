@@ -32,6 +32,7 @@ return (
         destination: location.state.destination,
         passengers: location.state.passengers,
         budget:location.state.budget,
+        idAPI: location.state.idAPI,
         planePricePreference: location.state.planePricePreference,
         hotelPreference: location.state.hotelPreference,
         carTypePreference:carType,
