@@ -15,16 +15,29 @@ const Select = () => {
   const [departureDate, setDepartureDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
 
-  const idApi = {
-    "Atlanta": "ATL",
-    "Los Angeles": "LAX",
-    "Berlin": "BER",
-    "Seattle": "SEA",
-    "Bali": "DPS",
-    "Singapore": "SIN",
-    "New York City": "JFK",
-    "Ontario": "ONT",
+
+
+  let parisID = 95565041;
+  let singaporeID = 95673375;
+  let nycID = 95565058;
+  let laID = 95673368;
+  let seaID = 95673694;
+  let atlID = 95673800;
+  let baliID = 95673809;
+  let berlinID = 95673383;
+  const idAPI = {
+    "ATL": atlID,
+    "LAX": laID,
+    "BER": berlinID,
+    "CDG": parisID,
+    "SIN": singaporeID,
+    "JFK": nycID,
+    "DPS": baliID,
+    "SEA": seaID
   };
+ 
+
+
 
   const handleDestination = (e) => {
     const destinationSelect = e.target.getAttribute('data-value');
@@ -36,14 +49,18 @@ const Select = () => {
     console.log(e.target.getAttribute('data-value'));
     setPassengers(passengerSelect);
   };
-  const handleDepartureDate = (date) => {
-    console.log(dateParse(date.toString()));
-    // const departure = 
-  }
-  const handleReturnDate = (date) => {
-    console.log(dateParse(date.toString()))
-    // const returnDate = e.target.get;
-  }
+
+
+
+  //date stuff
+  // const handleDepartureDate = (date) => {
+  //   console.log(dateParse(date.toString()));
+  //   // const departure = 
+  // }
+  // const handleReturnDate = (date) => {
+  //   console.log(dateParse(date.toString()))
+  //   // const returnDate = e.target.get;
+  // }
 
 //   const Example = () => {
 //     const [startDate, setStartDate] = useState(new Date());
@@ -52,47 +69,64 @@ const Select = () => {
 //     );
 //   };
 
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': 'bb4fb94ff1msh97b362efb2e3b6cp11ba3ajsn2104da1b763a',
-    'X-RapidAPI-Host': 'skyscanner44.p.rapidapi.com'
-  }
-};
 
+
+
+
+//api options object
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     'X-RapidAPI-Key': 'bb4fb94ff1msh97b362efb2e3b6cp11ba3ajsn2104da1b763a',
+//     'X-RapidAPI-Host': 'skyscanner44.p.rapidapi.com'
+//   }
+// };
+
+//fetch airport
 // fetch request for best flight plane
-fetch('https://skyscanner44.p.rapidapi.com/search?adults=1&origin=MUC&destination=BER&departureDate=2022-11-11&returnDate=2022-11-18&currency=EUR', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+// fetch('https://skyscanner44.p.rapidapi.com/search?adults=1&origin=MUC&destination=SIN&departureDate=2022-11-11&returnDate=2022-11-18', options)
+//   .then(response => response.json())
+//   .then(response => console.log(response))
+//   .catch(err => console.error(err));
 
 
-// fetch request for hotel
-fetch('https://skyscanner44.p.rapidapi.com/search-hotel?locationId=95673383&adults=1&rooms=1&checkin=2022-11-11&checkout=2022-11-18&currency=EUR', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+
+//query id info from api
+  // fetch('https://skyscanner44.p.rapidapi.com/autocomplete-rentacar?query=berlin', options)
+	// .then(response => response.json())
+	// .then(response => console.log(response))
+	// .catch(err => console.error(err));
+
+//fetch hotel
+// fetch(`https://skyscanner44.p.rapidapi.com/search-hotel?locationId=${baliID}&adults=1&rooms=1&checkin=2022-11-11&checkout=2022-11-18`, options)
+//   .then(response => response.json())
+//   .then(response => console.log(response))
+//   .catch(err => console.error(err));
 
 
-//fetch request for car
-fetch('https://skyscanner44.p.rapidapi.com/search-rentacar?pickupId=95673383&pickupDate=2022-11-11&pickupTime=10%3A00&returnDate=2022-11-18&returnTime=10%3A00&currency=EUR', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+//fetch car
+// fetch(`https://skyscanner44.p.rapidapi.com/search-rentacar?pickupId=${baliID}&pickupDate=2022-11-11&pickupTime=10%3A00&returnDate=2022-11-18&returnTime=10%3A00`, options)
+//   .then(response => response.json())
+//   .then(response => console.log(response))
+//   .catch(err => console.error(err));
   
+
+
+
+
 
   return (
     <div className = "initialSelect">
-      <input onChange={(e) => setBudget(event.target.value)} className = "budget"></input>
+      <input onChange={(event) => setBudget(event.target.value)} className = "budget"></input>
       <div className = "destinationSelect">
         <div onClick = {handleDestination} data-value= "ATL" className = "destination">Atlanta</div>
         <div onClick = {handleDestination} data-value= "LAX" className = "destination">Los Angeles</div>
         <div onClick = {handleDestination} data-value = "BER" className = "destination">Berlin</div>
         <div onClick = {handleDestination} data-value = "SEA" className = "destination">Seattle</div>
-        <div onClick = {handleDestination} data-value = "DPS" className = "destination">Bali</div>
+        <div onClick = {handleDestination} data-value = "CDG" className = "destination">Paris</div>
         <div onClick = {handleDestination} data-value = "SIN" className = "destination">Singapore</div>
         <div onClick = {handleDestination} data-value = "JFK" className = "destination">New York City</div>
-        <div onClick = {handleDestination} data-value = "ONT" className = "destination">Ontario</div>
+        <div onClick = {handleDestination} data-value = "DPS" className = "destination">Bali</div>
       </div>
 
       <div className = "passengerSelect">
@@ -107,7 +141,7 @@ fetch('https://skyscanner44.p.rapidapi.com/search-rentacar?pickupId=95673383&pic
         <div onClick = {handlePassengers} data-value = "9" className = "passengers">9</div>
       </div>
 
-    <div id="departure-date-picker" className="datePicker">
+    {/* <div id="departure-date-picker" className="datePicker">
         <h4>Select Departure Date</h4>
         <DatePicker className="date" selected = {departureDate} onChange={(date) => {setDepartureDate(date); handleDepartureDate}} />
     </div>
@@ -115,7 +149,7 @@ fetch('https://skyscanner44.p.rapidapi.com/search-rentacar?pickupId=95673383&pic
     <div id="return-date-picker" className="datePicker">
         <h4> Select Return Date </h4>
         <DatePicker selected = {returnDate} onChange={(date) => {setReturnDate(date); handleReturnDate}} />
-    </div>
+    </div> */}
 {/* 
     <div>
         <DatePicker selected={returnDate} onChange={(date) => setReturnDate(date)} />
@@ -127,7 +161,7 @@ fetch('https://skyscanner44.p.rapidapi.com/search-rentacar?pickupId=95673383&pic
         destination: destination,
         passengers: passengers,
         budget: budget,
-        
+        idAPI: idAPI
        }}
        >
       <button className="next">Next</button>
