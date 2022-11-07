@@ -45,15 +45,43 @@ const Select = () => {
     // const returnDate = e.target.get;
   }
 
-//   const Example = () => {
-//     const [startDate, setStartDate] = useState(new Date());
-//     return (
-//       <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} />
-//     );
-//   };
-  
+  //   const Example = () => {
+  //     const [startDate, setStartDate] = useState(new Date());
+  //     return (
+  //       <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} />
+  //     );
+  //   };
   
 
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'bb4fb94ff1msh97b362efb2e3b6cp11ba3ajsn2104da1b763a',
+      'X-RapidAPI-Host': 'skyscanner44.p.rapidapi.com'
+    }
+  };
+
+  // fetch request for best flight plane
+  fetch('https://skyscanner44.p.rapidapi.com/search?adults=1&origin=MUC&destination=BER&departureDate=2022-11-11&returnDate=2022-11-18&currency=EUR', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+
+
+  // fetch request for hotel
+  fetch('https://skyscanner44.p.rapidapi.com/search-hotel?locationId=95673383&adults=1&rooms=1&checkin=2022-11-11&checkout=2022-11-18&currency=EUR', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+
+
+  //fetch request for car
+  fetch('https://skyscanner44.p.rapidapi.com/search-rentacar?pickupId=95673383&pickupDate=2022-11-11&pickupTime=10%3A00&returnDate=2022-11-18&returnTime=10%3A00&currency=EUR', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+
+  
   return (
     <div className = "initialSelect">
       <input onChange={(e) => setBudget(event.target.value)} className = "budget"></input>
@@ -80,30 +108,30 @@ const Select = () => {
         <div onClick = {handlePassengers} data-value = "9" className = "passengers">9</div>
       </div>
 
-    <div id="departure-date-picker" className="datePicker">
+      <div id="departure-date-picker" className="datePicker">
         <h4>Select Departure Date</h4>
         <DatePicker className="date" selected = {departureDate} onChange={(date) => {setDepartureDate(date); handleDepartureDate}} />
-    </div>
+      </div>
 
-    <div id="return-date-picker" className="datePicker">
+      <div id="return-date-picker" className="datePicker">
         <h4> Select Return Date </h4>
         <DatePicker selected = {returnDate} onChange={(date) => {setReturnDate(date); handleReturnDate}} />
-    </div>
-{/* 
+      </div>
+      {/* 
     <div>
         <DatePicker selected={returnDate} onChange={(date) => setReturnDate(date)} />
     </div> */}
 
       <Link
-       to = "/plane"
-       state = {{
-        destination: destination,
-        passengers: passengers,
-        budget: budget,
+        to = "/plane"
+        state = {{
+          destination: destination,
+          passengers: passengers,
+          budget: budget,
         
-       }}
-       >
-      <button className="next">Next</button>
+        }}
+      >
+        <button className="next">Next</button>
       </Link>
     </div>
 

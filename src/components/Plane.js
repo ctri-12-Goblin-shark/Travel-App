@@ -17,9 +17,9 @@ const handlePlanePricePreference = (e) => {
 }
   return (
     <div className = "planeSelect">
-        <div onClick = {handlePlanePricePreference} data-value = "fastest">Fastest</div>
-        <div onClick = {handlePlanePricePreference} data-value = "cheapest">Cheapest</div>
-        <div onClick = {handlePlanePricePreference} data-value = "best">Best</div>
+        <div onClick = {handlePlanePricePreference} data-value = "1">Fastest</div>
+        <div onClick = {handlePlanePricePreference} data-value = "2">Cheapest</div>
+        <div onClick = {handlePlanePricePreference} data-value = "0">Best</div>
 
         <Link
        to = "/hotel"

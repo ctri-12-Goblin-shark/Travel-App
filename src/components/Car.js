@@ -16,14 +16,13 @@ const handleCarType = (e) => {
 const handleCarPrice = (e) => {
     const carPricePrefer = e.target.getAttribute("data-value")
     setCarPricePreference(carPricePrefer);
-    
 }
 return (
     <div className = "carSelect">
         <div className = "carTypeSelect">
         <div onClick = {handleCarType} data-value = "bmw">BMW</div>
         <div onClick = {handleCarType} data-value = "audi" >AUDI</div>
-        <div onClick = {handleCarType} data-value = "vw">VW</div>
+        <div onClick = {handleCarType} data-value = "volkswagen">VW</div>
         </div>
         <div className = "carPriceSelect">
         <div onClick = {handleCarPrice} data-value = "high">High-End</div>

@@ -15,6 +15,9 @@ controller.getPlaneData = (req, res, next) => {
 
     //const url = `https://skyscanner44.p.rapidapi.com/search?adults=${passengers}&origin=SEA&destination=${destination}&departureDate=${departureDate}&currency=USD&returnDate=${returnDate}`;
 
+// search best flight, search hotel rooms, search rental cars
+
+
     const options = {
         method: 'GET',
         headers: {
@@ -27,8 +30,8 @@ controller.getPlaneData = (req, res, next) => {
         .then(response => response.json())
         .then(response => {
           // console.log(response)
-          const price = response.itineraries.buckets[0].items[0].price.raw
-          console.log(price)
+          const price = response.itineraries.buckets[0].items[0].price.raw;
+          console.log(price);
           response.itineraries.buckets.forEach(ele => {
             console.log('ele', ele)
             console.log(ele.name)
