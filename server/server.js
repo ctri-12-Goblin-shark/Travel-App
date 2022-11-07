@@ -13,7 +13,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 app.use('/api', apiRouter);
 //
 app.get('/', (req, res) => {
-    res.status(200).send("hello");
+    res.status(200).send(res.locals);
 })
 
 

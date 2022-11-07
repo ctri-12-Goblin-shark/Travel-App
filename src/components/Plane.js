@@ -12,7 +12,7 @@ const handlePlanePricePreference = (e) => {
     e.target.style.backgroundColor = '#78F8A1';
     e.target.style.color = "black";
     const planeSelect = e.target.getAttribute('data-value');
-    console.log(planeSelect)
+    //console.log(planeSelect)
     setPlanePricePreference(planeSelect);
 }
   return (

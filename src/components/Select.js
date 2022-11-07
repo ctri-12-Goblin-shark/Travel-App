@@ -48,7 +48,7 @@ const Select = () => {
     e.target.style.backgroundColor = '#78F8A1';
     e.target.style.color = "black";
     const passengerSelect = e.target.getAttribute('data-value');
-    console.log(e.target.getAttribute('data-value'));
+   // console.log(e.target.getAttribute('data-value'));
     setPassengers(passengerSelect);
   };
 
