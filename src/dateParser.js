@@ -34,7 +34,7 @@
   }
   
   // console.log(parse('2022-11-01T07:00:00.000Z'))
-  console.log(parse('Tue Nov 22 2022 00:00:00 GMT-0800 (Pacific Standard Time)'))
+  //console.log(parse('Tue Nov 22 2022 00:00:00 GMT-0800 (Pacific Standard Time)'))
 // YYYY-MM-DD
 
 export { parse as dateParse };

@@ -18,7 +18,7 @@ return (
     <div className = "carSelect">
         <p className = "instruction">Select Car Type</p>
         <div className = "carTypeSelect">
-        <div className = "car" onClick = {handleCarType} data-value = "bmw">BMW</div>
+        <div className = "car" onClick = {handleCarType} data-value = "toyota">TOYOTA</div>
         <div className = "car" onClick = {handleCarType} data-value = "audi" >AUDI</div>
         <div className = "car" onClick = {handleCarType} data-value = "volkswagen">VW</div>
         </div>
