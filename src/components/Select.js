@@ -63,8 +63,11 @@ const Select = () => {
   return (
     <div className = "initialSelect">
       <h1>Welcome to <span>PURPLE</span> traveler!</h1>
-      <input onChange={(event) => setBudget(event.target.value)} className = "budget"></input>
       <p className = "instruction">Input Budget</p>
+      <input onChange={(event) => setBudget(event.target.value)} className = "budget"></input>
+      <div id="destination-instruction-div">
+        <p className = "instruction">Select a Destination</p>
+      </div>
       <div className = "destinationSelect">
         <div onClick = {handleDestination} data-value= "ATL" className = "destination"><img className="city-logo" src={ATL}></img><p className="city-name">Atlanta</p></div>
         <div onClick = {handleDestination} data-value= "LAX" className = "destination"><img className="city-logo" src={LAX}></img><p className="city-name">Los Angeles</p></div>
@@ -75,7 +78,9 @@ const Select = () => {
         <div onClick = {handleDestination} data-value = "JFK" className = "destination"><img className="city-logo" src={NYC}></img><p className="city-name">New York City</p></div>
         <div onClick = {handleDestination} data-value = "DPS" className = "destination"><img className="city-logo" src={BALI}></img><p className="city-name">Bali</p></div>
       </div>
-      <p className = "instruction">Select a Destination</p>
+      <div id="instruction-div">
+        <p className = "instruction">Select # of Travelers</p>
+      </div>
       <div className = "passengerSelect">
         <div onClick = {handlePassengers} data-value = "1" className = "passengers">1</div>
         <div onClick = {handlePassengers} data-value = "2" className = "passengers">2</div>
@@ -86,7 +91,6 @@ const Select = () => {
         <div onClick = {handlePassengers} data-value = "7" className = "passengers">7</div>
         <div onClick = {handlePassengers} data-value = "8" className = "passengers">8</div>
       </div>
-      <p className = "instruction">Select # of Travelers</p>
     <div className = "nextContainer">
       <Link
        to = "/plane"
