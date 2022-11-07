@@ -6,17 +6,11 @@ import { Link } from "react-router-dom";
 
 const Car = () => {
     const [carType,setCarType] = useState("")
-    const [carPricePreference,setCarPricePreference] = useState("")
     const location = useLocation();
 
 const handleCarType = (e) => {
     const carTypePrefer = e.target.getAttribute("data-value")
     setCarType(carTypePrefer);
-}
-const handleCarPrice = (e) => {
-    const carPricePrefer = e.target.getAttribute("data-value")
-    setCarPricePreference(carPricePrefer);
-    
 }
 return (
     <div className = "carSelect">
@@ -36,7 +30,6 @@ return (
         planePricePreference: location.state.planePricePreference,
         hotelPreference: location.state.hotelPreference,
         carTypePreference:carType,
-        carPricePreference:carPricePreference,
         
        }}
        >

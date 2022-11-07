@@ -10,8 +10,6 @@ function Plane() {
 
 const handlePlanePricePreference = (e) => {
     const planeSelect = e.target.getAttribute('data-value');
-    console.log(location.state.destination)
-    console.log(location.state.budget)
     console.log(planeSelect)
     setPlanePricePreference(planeSelect);
 }

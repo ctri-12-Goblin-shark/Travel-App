@@ -14,6 +14,7 @@ const Select = () => {
   const [passengers, setPassengers] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
+  const [idAPI, setIdAPI] = useState();
 
 
 
@@ -25,7 +26,8 @@ const Select = () => {
   let atlID = 95673800;
   let baliID = 95673809;
   let berlinID = 95673383;
-  const idAPI = {
+
+  const idAPIobj = {
     "ATL": atlID,
     "LAX": laID,
     "BER": berlinID,
@@ -41,8 +43,9 @@ const Select = () => {
 
   const handleDestination = (e) => {
     const destinationSelect = e.target.getAttribute('data-value');
-    console.log(e.target.getAttribute('data-value'));
     setDestination(destinationSelect);
+    setIdAPI(idAPIobj[destinationSelect])
+
   };
   const handlePassengers = (e) => {
     const passengerSelect = e.target.getAttribute('data-value');
@@ -74,13 +77,13 @@ const Select = () => {
 
 
 //api options object
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     'X-RapidAPI-Key': 'bb4fb94ff1msh97b362efb2e3b6cp11ba3ajsn2104da1b763a',
-//     'X-RapidAPI-Host': 'skyscanner44.p.rapidapi.com'
-//   }
-// };
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': 'bb4fb94ff1msh97b362efb2e3b6cp11ba3ajsn2104da1b763a',
+    'X-RapidAPI-Host': 'skyscanner44.p.rapidapi.com'
+  }
+};
 
 //fetch airport
 // fetch request for best flight plane
