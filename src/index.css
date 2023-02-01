@@ -1,0 +1,225 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #e7e3f6;
+    padding-top: 50px;
+}
+
+input {
+    display:block;
+    width: 400px;
+    height:200px;
+    font-size:150px;
+    border:4px solid blueviolet;
+    border-radius:10px;
+    margin: 20px auto;
+    cursor: pointer;
+    color:blueviolet;
+    text-align: center;
+}
+
+h1 {
+    display:block;
+    font-size:50px;
+    margin: 0px auto;
+    width:800px;
+    text-align: center;
+    margin-bottom:50px;
+}
+span {
+    color:blueviolet;
+}
+
+.instruction {
+    margin: 0px auto; 
+    width:500px;
+    text-align: center;
+    font-size: 30px;
+    text-decoration: underline;
+}
+.initialSelect {
+
+}
+
+.destination, .passengers, .plane, .hotel, .car{
+    box-sizing:border-box;
+    border-radius: 20px;
+    background-color: blueviolet;
+    color:whitesmoke;
+    min-width: 300px;
+    height: 400px;
+    margin-top: 100px;
+    margin-bottom:20px;
+    margin-right: 55px;
+    font-size: 30px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.destinationSelect, .passengerSelect, .planeSelect, .hotelSelect, .carTypeSelect {
+    display:flex;
+    overflow: scroll;
+}
+
+.planeSelect, .hotelSelect, .carTypeSelect {
+justify-content: space-around;
+}
+
+.nextContainer {
+    margin-top:100px;
+}
+
+.next {
+    display:block;
+    margin: 0px auto;
+    height:150px;
+    width:400px;
+    font-size: 50px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    border:4px solid blueviolet;
+}
+
+.displayPlane {
+    width: 100px;
+    height: 100px; 
+    background-color: purple;
+}
+
+.displayHotel {
+    width: 100px;
+    height: 100px; 
+    background-color: purple;
+}
+
+.displayCar {
+    width: 100px;
+    height: 100px; 
+    background-color: purple;
+}
+
+.displaySavings {
+    width: 100px;
+    height: 100px; 
+    background-color: purple;
+}
+
+.displayPage {
+    display: flex; 
+}
+
+.calculate {
+    display:block;
+    width: 400px;
+    height: 200px;
+    font-size: 60px;
+    letter-spacing: 7px;
+    border:4px solid blueviolet;
+    border-radius:10px;
+    margin: 20px auto;
+    cursor: pointer;
+    color:blueviolet;
+    text-align: center;
+}
+
+  /* PLANE PAGE */
+
+.city-name {
+    letter-spacing: 5px;
+}
+  
+.city-logo {
+    max-width: 200px;
+    max-height: 150px;
+    filter: brightness(0) invert(1);
+}
+
+.destination {
+    display: flex;
+    flex-direction: column;
+}
+
+.destinationSelect {
+    background-color: #ffffff;
+    padding-bottom: 50px;
+}
+
+.passengers {
+    font-size: 100px;
+}
+
+.instruction {
+    padding-bottom: 50px;
+    padding-bottom: 50px;
+    letter-spacing: 7px;
+}
+
+.table-display {
+    /* margin-left: 50vw;
+    margin-right: 50vw; */
+}
+
+#display-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+td, th {
+    border: 1px solid blueviolet;
+    padding: 8px;
+}
+
+#instruction-div {
+    position: relative;
+    margin-top: 70px;
+    margin-bottom: -80px;
+}
+
+#destination-instruction-div{
+    background-color: #ffffff;
+    padding-top: 60px;
+    margin-top: 70px;
+    margin-bottom: -80px;
+}
+
+
+/* Plane */
+
+
+.plane {
+    letter-spacing: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HOTEL */
+
+.hotel {
+    letter-spacing: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* car */
+
+.car {
+    letter-spacing: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+#audi {
+    margin-bottom: 40px;
+    padding-top: 30px
+}
+
+button:hover {
+    background-color: rgb(120, 248, 161);
+}
